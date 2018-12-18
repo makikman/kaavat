@@ -64,7 +64,17 @@ def expr_builder():
     print("Input: " + str(expr))
     return expr
 
+def usage():
+        print("Usage:")
+        print("kaavat [-s solve -d diff -i integrate] [expression]")
+        print("Expression example: 3x2 -2x 17")
+        exit(1)
+ 
+
 def main():
+
+    if(len(sys.argv) < 2):
+        usage()
 
     if(sys.argv[1] == '-s'):
         result = solveset(expr_builder(), x)
@@ -73,9 +83,7 @@ def main():
     elif(sys.argv[1] == '-i'):
         result = integrate(expr_builder(), x)
     else:
-        print("Usage:")
-        print("kaavat [-s solve -d diff -i integrate] [expression]")
-        exit(1)
+        usage()
     print("Output: " + str(result))
 
 if __name__ == "__main__":
